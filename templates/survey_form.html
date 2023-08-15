@@ -1,16 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Survey Form</title>
-</head>
-<body>
-    <form method="POST" action="/survey">
-        <label for="name">Name:</label>
-        <input type="text" name="name" required>
-        
-        <!-- Add more survey questions here -->
-
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
+<form method="POST" action="/survey">
+    <label>
+      Name:
+      <input type="text" name="name" required>
+    </label>
+    <br>
+    <label>
+      Date of Birth:
+      <input type="date" name="date_of_birth" required>
+    </label>
+    <br>
+    <label>
+      Sex:
+      <select name="sex" required>
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </label>
+    <br>
+    <label>
+      Height (cm):
+      <input type="number" name="height" required>
+    </label>
+    <br>
+    <label>
+      Weight (kg):
+      <input type="number" name="weight" required>
+    </label>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+  
