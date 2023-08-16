@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
+from notion_api import add_participant_row
 
 app = Flask(__name__)
-
-app.debug = True
 
 @app.route('/')
 def home():
@@ -12,7 +11,15 @@ def home():
 def survey():
     if request.method == 'POST':
         # Process form submission and save survey data
-        return 'Thank you for taking the survey!'
+        name = request.form['name']
+        date_of_birth = request.form['date_of_birth']
+        sex = request.form['sex']
+        height = float(request.form['height'])
+        weight = float(request.form['weight'])
+
+        response = add_participant_row(name, date_of_birth, sex, height, weight)
+
+        return response
     else:
         # Render the survey form template
         return render_template('survey_form.html')
