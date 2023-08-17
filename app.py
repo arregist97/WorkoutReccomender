@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from notion_api import add_participant_row
+from openai_api import create_workout
 
 app = Flask(__name__)
 
@@ -19,7 +20,10 @@ def survey():
 
         response = add_participant_row(name, date_of_birth, sex, height, weight)
 
-        return response
+        workout = create_workout(name, date_of_birth, sex, height, weight)
+
+
+        return workout
     else:
         # Render the survey form template
         return render_template('survey_form.html')
